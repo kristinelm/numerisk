@@ -2,10 +2,10 @@ function Q = newtoncotes(f, n, a, b)
     w = dlmread('vekt.txt');
     sum = 0;
     
-    h = (b-a)/n;
+    h = (b-a)/n
     
     for i = 1:n+1
-        sum = sum + (b-a)*w(n,i)*f(a+(i-1)*h);
+        sum = sum + (b-a)*w(n,i)*f(a+i-1)*h);
     end
     
     Q = sum;
