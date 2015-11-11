@@ -1,0 +1,26 @@
+function tab = divdiff(x, y)
+%  DIVDIFF(X, Y) return the table of divided differences based on the data
+%  points X, Y. 
+%  X, Y are column vectors.
+
+%Find required dimensions for nxn-matrix of values
+n = length(x);
+
+%Initialize the nxn-matrix for the values of the divided differences
+tab = zeros(n, n);
+
+%The first column contains the original y-values
+tab(:, 1) = y;
+
+%Calculate the rest  of the values
+for k = 1 : n - 1
+    for j = 1 : n - k
+        tab(j, k + 1) = ((tab(j + 1, k) - tab(j, k)))/ ((x(j + k) - x(j)));
+    end
+end
+
+% Include the x-values in the table. They are now in the first column, the
+% y's in the second.
+tab = [x, tab];
+    
+end
